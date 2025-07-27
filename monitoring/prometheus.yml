@@ -1,19 +1,285 @@
-{
-  "global": {
-    "scrape_interval": "15s",
-    "evaluation_interval": "15s"
-  },
-  "scrape_configs": [
-    {
-      "job_name": "masquerade-mcp",
-      "static_configs": [
-        {
-          "targets": [
-            "masquerade-mcp:8000"
-          ]
-        }
-      ],
-      "metrics_path": "/metrics"
-    }
-  ]
-}
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # SecureAI Privacy Shield
+  - job_name: 'secureai-privacy-shield'
+    static_configs:
+      - targets: ['secureai-privacy-shield:8000']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+    scrape_timeout: 5s
+
+  # Redis
+  - job_name: 'redis'
+    static_configs:
+      - targets: ['redis:6379']
+    scrape_interval: 30s
+
+  # Node Exporter (if running)
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+    scrape_interval: 30s
+
+  # Docker containers
+  - job_name: 'docker'
+    static_configs:
+      - targets: ['docker:9323']
+    scrape_interval: 30s
+
+  # Nginx (if using)
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['nginx:9113']
+    scrape_interval: 30s
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+
+# Alert rules
+groups:
+  - name: secureai_alerts
+    rules:
+      # High error rate
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.1
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High error rate detected"
+          description: "Error rate is {{ $value }} errors per second"
+
+      # High response time
+      - alert: HighResponseTime
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m])) > 2
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High response time detected"
+          description: "95th percentile response time is {{ $value }} seconds"
+
+      # Service down
+      - alert: ServiceDown
+        expr: up{job="secureai-privacy-shield"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "SecureAI Privacy Shield is down"
+          description: "The SecureAI Privacy Shield service has been down for more than 1 minute"
+
+      # High memory usage
+      - alert: HighMemoryUsage
+        expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes > 0.9
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High memory usage"
+          description: "Memory usage is above 90%"
+
+      # High CPU usage
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage"
+          description: "CPU usage is above 80%"
+
+      # Disk space low
+      - alert: DiskSpaceLow
+        expr: (node_filesystem_avail_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"}) < 0.1
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low disk space"
+          description: "Disk space is below 10%"
+
+      # API rate limit approaching
+      - alert: RateLimitApproaching
+        expr: rate(secureai_requests_total[5m]) > 50
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Rate limit approaching"
+          description: "Request rate is approaching the limit"
+
+      # Cache hit rate low
+      - alert: LowCacheHitRate
+        expr: rate(secureai_cache_hits_total[5m]) / rate(secureai_cache_requests_total[5m]) < 0.5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low cache hit rate"
+          description: "Cache hit rate is below 50%"
+
+      # External API errors
+      - alert: ExternalAPIErrors
+        expr: rate(secureai_external_api_errors_total[5m]) > 0.1
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "External API errors detected"
+          description: "External API error rate is {{ $value }} errors per second"
+
+      # Database connection issues
+      - alert: DatabaseConnectionIssues
+        expr: secureai_database_connections_active / secureai_database_connections_max > 0.8
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Database connection pool nearly full"
+          description: "Database connection pool is {{ $value | humanizePercentage }} full"
+
+      # Redis connection issues
+      - alert: RedisConnectionIssues
+        expr: up{job="redis"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Redis is down"
+          description: "Redis service is not responding"
+
+      # Health check failures
+      - alert: HealthCheckFailures
+        expr: secureai_health_check_failures_total > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Health check failures detected"
+          description: "Health checks are failing"
+
+      # SSL certificate expiration
+      - alert: SSLCertificateExpiring
+        expr: probe_ssl_earliest_cert_expiry - time() < 86400 * 30
+        for: 1h
+        labels:
+          severity: warning
+        annotations:
+          summary: "SSL certificate expiring soon"
+          description: "SSL certificate will expire in less than 30 days"
+
+      # Backup failures
+      - alert: BackupFailures
+        expr: secureai_backup_failures_total > 0
+        for: 1h
+        labels:
+          severity: critical
+        annotations:
+          summary: "Backup failures detected"
+          description: "Backup operations are failing"
+
+      # Security alerts
+      - alert: SecurityViolations
+        expr: rate(secureai_security_violations_total[5m]) > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Security violations detected"
+          description: "Security violations are occurring at {{ $value }} per second"
+
+      # Performance degradation
+      - alert: PerformanceDegradation
+        expr: histogram_quantile(0.99, rate(http_request_duration_seconds_bucket[5m])) > 5
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Performance degradation detected"
+          description: "99th percentile response time is {{ $value }} seconds"
+
+      # Resource exhaustion
+      - alert: ResourceExhaustion
+        expr: secureai_resource_usage_percent > 90
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Resource exhaustion detected"
+          description: "Resource usage is above 90%"
+
+      # Network issues
+      - alert: NetworkIssues
+        expr: rate(secureai_network_errors_total[5m]) > 0.1
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Network issues detected"
+          description: "Network error rate is {{ $value }} errors per second"
+
+      # Configuration issues
+      - alert: ConfigurationIssues
+        expr: secureai_configuration_errors_total > 0
+        for: 1h
+        labels:
+          severity: warning
+        annotations:
+          summary: "Configuration issues detected"
+          description: "Configuration errors are present"
+
+      # Dependency failures
+      - alert: DependencyFailures
+        expr: secureai_dependency_health_status == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Dependency failures detected"
+          description: "External dependencies are failing"
+
+      # Data integrity issues
+      - alert: DataIntegrityIssues
+        expr: secureai_data_integrity_errors_total > 0
+        for: 1h
+        labels:
+          severity: critical
+        annotations:
+          summary: "Data integrity issues detected"
+          description: "Data integrity errors are present"
+
+      # Authentication failures
+      - alert: AuthenticationFailures
+        expr: rate(secureai_auth_failures_total[5m]) > 0.1
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Authentication failures detected"
+          description: "Authentication failure rate is {{ $value }} failures per second"
+
+      # Authorization violations
+      - alert: AuthorizationViolations
+        expr: rate(secureai_auth_violations_total[5m]) > 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Authorization violations detected"
+          description: "Authorization violations are occurring at {{ $value }} per second"

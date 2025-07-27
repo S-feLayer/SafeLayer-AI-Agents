@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureAI Privacy Shield - Protect Your AI Agents</title>
+    <meta name="description" content="Comprehensive PII protection for AI agents. Real-time detection, automatic redaction, and compliance assurance.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/logo.svg" alt="SecureAI" class="logo">
+                <span class="logo-text">SecureAI Privacy Shield</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#integrations">Integrations</a></li>
+                <li><a href="#docs">Documentation</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#get-started" class="cta-button">Get Started</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Protect Your AI Agents with 
+                    <span class="gradient-text">Intelligent Privacy</span>
+                </h1>
+                <p class="hero-subtitle">
+                    SecureAI Privacy Shield provides comprehensive PII protection for AI agents, 
+                    ensuring sensitive data is automatically detected and redacted before processing.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#get-started" class="primary-button">Start Free Trial</a>
+                    <a href="#demo" class="secondary-button">Watch Demo</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">99.9%</span>
+                        <span class="stat-label">PII Detection Rate</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">&lt;50ms</span>
+                        <span class="stat-label">Average Response Time</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">GDPR</span>
+                        <span class="stat-label">Compliant</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="code-demo">
+                    <div class="code-header">
+                        <span class="code-title">AI Agent Protection</span>
+                        <div class="code-controls">
+                            <span class="control"></span>
+                            <span class="control"></span>
+                            <span class="control"></span>
+                        </div>
+                    </div>
+                    <pre><code class="language-python">
+# Before: Exposed PII
+user_input = "My email is john@company.com"
+ai_response = ai_agent.process(user_input)
+# Risk: PII in logs and responses
+
+# After: Protected with SecureAI
+from secureai_sdk import SecureAIShield
+
+shield = SecureAIShield(api_key="your_key")
+protected_input = shield.redact(user_input)
+safe_response = shield.redact(ai_response)
+# Result: All PII automatically redacted
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why AI Agents Need Privacy Protection</h2>
+                <p>AI agents process vast amounts of data, making them vulnerable to privacy violations</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Real-time PII Detection</h3>
+                    <p>Automatically detect emails, phone numbers, SSNs, addresses, and custom patterns in real-time</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Automatic Redaction</h3>
+                    <p>Intelligently redact sensitive information before it leaves your system</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>High Performance</h3>
+                    <p>Process thousands of requests per second with sub-50ms response times</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Compliance Ready</h3>
+                    <p>Meet GDPR, CCPA, HIPAA, and other privacy regulations automatically</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Easy Integration</h3>
+                    <p>Simple SDKs for Python, JavaScript, and direct API integration</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Comprehensive Monitoring</h3>
+                    <p>Track protection effectiveness with detailed metrics and audit logs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Integrations Section -->
+    <section id="integrations" class="integrations">
+        <div class="container">
+            <div class="section-header">
+                <h2>Seamless AI Agent Integrations</h2>
+                <p>Works with all major AI frameworks and platforms</p>
+            </div>
+            <div class="integrations-grid">
+                <div class="integration-card">
+                    <img src="assets/langchain.svg" alt="LangChain" class="integration-logo">
+                    <h3>LangChain</h3>
+                    <p>Protect your LangChain agents with our dedicated tool integration</p>
+                    <a href="#docs" class="learn-more">Learn More →</a>
+                </div>
+                <div class="integration-card">
+                    <img src="assets/openai.svg" alt="OpenAI" class="integration-logo">
+                    <h3>OpenAI</h3>
+                    <p>Secure ChatGPT and GPT-4 applications with function calling</p>
+                    <a href="#docs" class="learn-more">Learn More →</a>
+                </div>
+                <div class="integration-card">
+                    <img src="assets/anthropic.svg" alt="Anthropic" class="integration-logo">
+                    <h3>Anthropic Claude</h3>
+                    <p>Protect Claude conversations with automatic message filtering</p>
+                    <a href="#docs" class="learn-more">Learn More →</a>
+                </div>
+                <div class="integration-card">
+                    <img src="assets/fastapi.svg" alt="FastAPI" class="integration-logo">
+                    <h3>FastAPI</h3>
+                    <p>Add privacy protection to your FastAPI applications with middleware</p>
+                    <a href="#docs" class="learn-more">Learn More →</a>
+                </div>
+                <div class="integration-card">
+                    <img src="assets/nodejs.svg" alt="Node.js" class="integration-logo">
+                    <h3>Node.js</h3>
+                    <p>Protect JavaScript/TypeScript AI applications</p>
+                    <a href="#docs" class="learn-more">Learn More →</a>
+                </div>
+                <div class="integration-card">
+                    <img src="assets/api.svg" alt="API" class="integration-logo">
+                    <h3>REST API</h3>
+                    <p>Direct API integration for any platform or language</p>
+                    <a href="#docs" class="learn-more">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SDK Section -->
+    <section id="sdk" class="sdk-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Download Our SDKs</h2>
+                <p>Get started quickly with our comprehensive SDKs and examples</p>
+            </div>
+            <div class="sdk-grid">
+                <div class="sdk-card">
+                    <div class="sdk-header">
+                        <div class="sdk-icon">🐍</div>
+                        <h3>Python SDK</h3>
+                    </div>
+                    <p>Comprehensive Python SDK with async support, caching, and decorators</p>
+                    <div class="sdk-features">
+                        <span class="feature-tag">Async Support</span>
+                        <span class="feature-tag">Caching</span>
+                        <span class="feature-tag">Decorators</span>
+                        <span class="feature-tag">Batch Processing</span>
+                    </div>
+                    <div class="sdk-actions">
+                        <a href="downloads/secureai-sdk-python.zip" class="download-button">Download SDK</a>
+                        <a href="#docs" class="docs-link">View Docs</a>
+                    </div>
+                </div>
+                <div class="sdk-card">
+                    <div class="sdk-header">
+                        <div class="sdk-icon">⚡</div>
+                        <h3>JavaScript SDK</h3>
+                    </div>
+                    <p>Node.js and browser-compatible SDK with TypeScript support</p>
+                    <div class="sdk-features">
+                        <span class="feature-tag">TypeScript</span>
+                        <span class="feature-tag">Browser Support</span>
+                        <span class="feature-tag">Decorators</span>
+                        <span class="feature-tag">Promise-based</span>
+                    </div>
+                    <div class="sdk-actions">
+                        <a href="downloads/secureai-sdk-js.zip" class="download-button">Download SDK</a>
+                        <a href="#docs" class="docs-link">View Docs</a>
+                    </div>
+                </div>
+                <div class="sdk-card">
+                    <div class="sdk-header">
+                        <div class="sdk-icon">🔌</div>
+                        <h3>API Integration</h3>
+                    </div>
+                    <p>Direct REST API integration with comprehensive documentation</p>
+                    <div class="sdk-features">
+                        <span class="feature-tag">REST API</span>
+                        <span class="feature-tag">OpenAPI Spec</span>
+                        <span class="feature-tag">Rate Limiting</span>
+                        <span class="feature-tag">Webhooks</span>
+                    </div>
+                    <div class="sdk-actions">
+                        <a href="downloads/api-docs.zip" class="download-button">Download Docs</a>
+                        <a href="#docs" class="docs-link">View Docs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Documentation Section -->
+    <section id="docs" class="documentation">
+        <div class="container">
+            <div class="section-header">
+                <h2>Documentation & Examples</h2>
+                <p>Comprehensive guides and examples for integrating SecureAI Privacy Shield</p>
+            </div>
+            <div class="docs-grid">
+                <div class="docs-card">
+                    <h3>Quick Start Guide</h3>
+                    <p>Get up and running in 5 minutes with our quick start guide</p>
+                    <ul>
+                        <li>Installation instructions</li>
+                        <li>Basic usage examples</li>
+                        <li>Configuration options</li>
+                    </ul>
+                    <a href="docs/quickstart.html" class="docs-link">Read Guide →</a>
+                </div>
+                <div class="docs-card">
+                    <h3>AI Agent Integration</h3>
+                    <p>Learn how to integrate privacy protection with popular AI frameworks</p>
+                    <ul>
+                        <li>LangChain integration</li>
+                        <li>OpenAI function calling</li>
+                        <li>Anthropic Claude protection</li>
+                    </ul>
+                    <a href="docs/ai-agent-integration.html" class="docs-link">Read Guide →</a>
+                </div>
+                <div class="docs-card">
+                    <h3>API Reference</h3>
+                    <p>Complete API documentation with examples and best practices</p>
+                    <ul>
+                        <li>Endpoint documentation</li>
+                        <li>Request/response schemas</li>
+                        <li>Error handling</li>
+                    </ul>
+                    <a href="docs/api-reference.html" class="docs-link">View API Docs →</a>
+                </div>
+                <div class="docs-card">
+                    <h3>Deployment Guide</h3>
+                    <p>Production deployment instructions and best practices</p>
+                    <ul>
+                        <li>Docker deployment</li>
+                        <li>Kubernetes setup</li>
+                        <li>Monitoring configuration</li>
+                    </ul>
+                    <a href="docs/deployment.html" class="docs-link">Read Guide →</a>
+                </div>
+                <div class="docs-card">
+                    <h3>Compliance Guide</h3>
+                    <p>Ensure your AI applications meet privacy regulations</p>
+                    <ul>
+                        <li>GDPR compliance</li>
+                        <li>CCPA requirements</li>
+                        <li>HIPAA considerations</li>
+                    </ul>
+                    <a href="docs/compliance.html" class="docs-link">Read Guide →</a>
+                </div>
+                <div class="docs-card">
+                    <h3>Examples & Tutorials</h3>
+                    <p>Real-world examples and step-by-step tutorials</p>
+                    <ul>
+                        <li>Chatbot protection</li>
+                        <li>Document processing</li>
+                        <li>API integration</li>
+                    </ul>
+                    <a href="docs/examples.html" class="docs-link">View Examples →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Choose the plan that fits your needs</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Starter</h3>
+                        <div class="price">
+                            <span class="amount">$49</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>10,000 API calls/month</li>
+                        <li>Basic PII detection</li>
+                        <li>Email support</li>
+                        <li>Standard response time</li>
+                        <li>Basic analytics</li>
+                    </ul>
+                    <a href="#get-started" class="pricing-button">Start Free Trial</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Professional</h3>
+                        <div class="price">
+                            <span class="amount">$199</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>100,000 API calls/month</li>
+                        <li>Advanced PII detection</li>
+                        <li>Priority support</li>
+                        <li>Fast response time</li>
+                        <li>Advanced analytics</li>
+                        <li>Custom patterns</li>
+                        <li>Audit logging</li>
+                    </ul>
+                    <a href="#get-started" class="pricing-button featured">Start Free Trial</a>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <div class="price">
+                            <span class="amount">Custom</span>
+                            <span class="period">/month</span>
+                        </div>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Unlimited API calls</li>
+                        <li>Custom PII detection</li>
+                        <li>24/7 support</li>
+                        <li>Guaranteed SLA</li>
+                        <li>Custom analytics</li>
+                        <li>On-premise deployment</li>
+                        <li>Compliance consulting</li>
+                    </ul>
+                    <a href="#contact" class="pricing-button">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="get-started" class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Protect Your AI Agents?</h2>
+                <p>Start your free trial today and see how easy it is to add privacy protection to your AI applications</p>
+                <div class="cta-buttons">
+                    <a href="#signup" class="primary-button large">Start Free Trial</a>
+                    <a href="#demo" class="secondary-button large">Schedule Demo</a>
+                </div>
+                <div class="cta-features">
+                    <span>✓ 14-day free trial</span>
+                    <span>✓ No credit card required</span>
+                    <span>✓ Full feature access</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="assets/logo.svg" alt="SecureAI" class="logo">
+                        <span>SecureAI Privacy Shield</span>
+                    </div>
+                    <p>Protecting AI agents with intelligent privacy protection</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">GitHub</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#integrations">Integrations</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#docs">Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="docs/quickstart.html">Quick Start</a></li>
+                        <li><a href="docs/examples.html">Examples</a></li>
+                        <li><a href="docs/api-reference.html">API Reference</a></li>
+                        <li><a href="docs/compliance.html">Compliance</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#privacy">Privacy</a></li>
+                        <li><a href="#terms">Terms</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#help">Help Center</a></li>
+                        <li><a href="#contact">Contact Support</a></li>
+                        <li><a href="#status">Status Page</a></li>
+                        <li><a href="#community">Community</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SecureAI Privacy Shield. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html> 

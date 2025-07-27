@@ -1,0 +1,26 @@
+# Minimal requirements for SecureAI Agent Shield - Standalone Version
+# No external dependencies required - uses only Python standard library
+
+# Optional: For enhanced logging (if needed)
+# structlog>=23.0.0
+
+# Optional: For JSON configuration (if needed)
+# pydantic>=2.0.0
+
+# Optional: For environment variables (if needed)
+# python-dotenv>=1.0.0
+
+# Optional: For Redis persistence (if needed)
+# redis>=4.5.0
+
+# Optional: For PostgreSQL persistence (if needed)
+# psycopg2-binary>=2.9.0
+
+# Optional: For advanced AI detection (if needed)
+# tinfoil
+# openai>=1.0.0
+# anthropic>=0.7.0
+
+# Development and testing (optional)
+# pytest>=7.0.0
+# pytest-asyncio>=0.21.0 

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-AI Privacy Shield - Enterprise PII Protection for AI
+SecureAI Privacy Shield - Enterprise PII Protection for AI Agents
 
-This module implements the core AI Privacy Shield functionality:
-- Real-time PII detection and redaction
-- Continuous entity persistence
-- Context preservation
-- Enterprise security features
+This module implements the core SecureAI Privacy Shield functionality:
+- Real-time PII detection and redaction for AI agents
+- Continuous entity persistence across agent sessions
+- Context preservation for multi-agent systems
+- Enterprise security features for autonomous workflows
 """
 
 import os
@@ -269,9 +269,9 @@ class EntityPersistenceManager:
             # Generic masking
             return f"[{entity_type.value.upper()}]"
 
-class AIPrivacyShield:
+class SecureAIPrivacyShield:
     """
-    Main AI Privacy Shield class that orchestrates PII detection and redaction.
+    Main SecureAI Privacy Shield class that orchestrates PII detection and redaction for AI agents.
     """
     
     def __init__(self, 
@@ -303,7 +303,7 @@ class AIPrivacyShield:
             "confidence_threshold": 0.8
         }
         
-        logger.info("AI Privacy Shield initialized successfully")
+        logger.info("SecureSecureSecureAI Privacy Shield initialized successfully")
     
     def redact_content(self, 
                       content: str,
@@ -360,6 +360,32 @@ class AIPrivacyShield:
             model_used=model_recommendation["model_name"],
             confidence_score=model_recommendation["model_info"]["confidence_score"]
         )
+    
+    def protect_text(self, 
+                    text: str,
+                    agent_type: str = "general",
+                    protection_level: str = "standard") -> Tuple[str, List[Dict[str, Any]]]:
+        """
+        Protect text content specifically for AI agents.
+        
+        Args:
+            text: Text content to protect
+            agent_type: Type of AI agent (customer_service, data_analysis, etc.)
+            protection_level: Level of protection (basic, standard, comprehensive, enterprise)
+            
+        Returns:
+            Tuple of (protected_text, detected_entities)
+        """
+        # Use the main redaction method with agent-specific context
+        result = self.redact_content(
+            content=text,
+            content_type="text",
+            session_id=f"agent_{agent_type}_{uuid.uuid4().hex[:8]}",
+            user_id=f"agent_{agent_type}",
+            organization_id="ai_agent_system"
+        )
+        
+        return result.redacted_content, result.detected_entities
     
     def _detect_sensitive_data(self, 
                               content: str, 
@@ -529,16 +555,16 @@ class AIPrivacyShield:
         })
 
 # Enterprise API wrapper
-class EnterprisePrivacyAPI:
+class SecureAIEnterprisePrivacyAPI:
     """
-    Enterprise API wrapper for AI Privacy Shield.
+    Enterprise API wrapper for SecureAI Privacy Shield.
     """
     
     def __init__(self, 
                  tinfoil_api_key: str,
                  redis_url: str = None,
                  postgres_url: str = None):
-        self.shield = AIPrivacyShield(
+        self.shield = SecureAIPrivacyShield(
             tinfoil_api_key=tinfoil_api_key,
             redis_url=redis_url,
             postgres_url=postgres_url,
@@ -589,11 +615,11 @@ class EnterprisePrivacyAPI:
         return results
 
 # Usage example
-def demonstrate_ai_privacy_shield():
-    """Demonstrate AI Privacy Shield functionality."""
+def demonstrate_secureai_privacy_shield():
+    """Demonstrate SecureAI Privacy Shield functionality."""
     
     # Initialize the shield
-    shield = AIPrivacyShield(enable_persistence=True)
+    shield = SecureAIPrivacyShield(enable_persistence=True)
     
     # Test conversation with entity persistence
     conversation = [
@@ -606,7 +632,7 @@ def demonstrate_ai_privacy_shield():
     session_id = "demo_session_123"
     user_id = "user_456"
     
-    print("🛡️ AI PRIVACY SHIELD DEMONSTRATION")
+    print("🛡️ SECURESECURESECUREAI PRIVACY SHIELD DEMONSTRATION")
     print("=" * 50)
     
     for i, message in enumerate(conversation, 1):
@@ -626,4 +652,4 @@ def demonstrate_ai_privacy_shield():
                 print(f"  • {mapping.original_value} → {mapping.masked_value}")
 
 if __name__ == "__main__":
-    demonstrate_ai_privacy_shield() 
+    demonstrate_secureai_privacy_shield() 

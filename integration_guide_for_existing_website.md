@@ -51,7 +51,7 @@ This guide shows you how to integrate SecureAI's superior PII detection into you
 #### **Step 1: Install SecureAI Dependencies**
 ```bash
 # Install the required packages
-pip install git+https://github.com/postralai/masquerade@main
+pip install git+https://github.com/postralai/secureai@main
 pip install fastmcp==0.4.1 mcp==1.3.0
 ```
 
@@ -82,12 +82,12 @@ class SecureAIIntegration:
         
         # Initialize SecureAI components
         try:
-            from src.secure_AI.ai_privacy_shield import AIPrivacyShield
-            self.shield = AIPrivacyShield(
+            from src.secure_AI.ai_privacy_shield import SecureAIPrivacyShield
+            self.shield = SecureAIPrivacyShield(
                 tinfoil_api_key=self.api_key,
                 enable_persistence=True
             )
-            logging.info("SecureAI Privacy Shield initialized successfully")
+            logging.info("SecureSecureSecureAI Privacy Shield initialized successfully")
         except ImportError as e:
             logging.error(f"Failed to import SecureAI: {e}")
             self.shield = None
@@ -509,7 +509,7 @@ custom_rules = {
 
 ### **1. Install Dependencies**
 ```bash
-pip install git+https://github.com/postralai/masquerade@main
+pip install git+https://github.com/postralai/secureai@main
 pip install fastapi uvicorn requests
 ```
 

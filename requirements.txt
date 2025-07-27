@@ -1,9 +1,44 @@
+# Core dependencies for SecureAI Privacy Shield
+fastapi>=0.104.0
+uvicorn[standard]>=0.24.0
+pydantic>=2.0.0
+pydantic-settings>=2.0.0
+
+# AI and MCP dependencies
 fastmcp==0.4.1
 mcp==1.3.0
 PyMuPDF>=1.26.0
 tinfoil
 psutil>=5.8.0
+
+# HTTP and networking
 requests>=2.31.0
+httpx>=0.25.0
+
+# Environment and configuration
 python-dotenv>=1.0.0
+
+# Monitoring and metrics
 prometheus-client>=0.17.0
 structlog>=23.0.0
+
+# Database and caching
+redis>=4.5.0
+psycopg2-binary>=2.9.0
+
+# Security
+python-multipart>=0.0.6
+python-jose[cryptography]>=3.3.0
+passlib[bcrypt]>=1.7.4
+
+# Optional: For advanced AI detection
+openai>=1.0.0
+anthropic>=0.7.0
+
+# Development and testing
+pytest>=7.0.0
+pytest-asyncio>=0.21.0
+pytest-cov>=4.0.0
+
+# Production dependencies
+gunicorn>=21.0.0

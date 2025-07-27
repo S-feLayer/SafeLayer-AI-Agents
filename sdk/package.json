@@ -1,0 +1,42 @@
+{
+  "name": "secureai-privacy-shield",
+  "version": "1.0.0",
+  "description": "Comprehensive PII protection SDK for AI agents",
+  "main": "secureai-sdk.js",
+  "scripts": {
+    "test": "jest",
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development --watch"
+  },
+  "keywords": [
+    "privacy",
+    "pii",
+    "ai",
+    "security",
+    "redaction",
+    "gdpr",
+    "compliance"
+  ],
+  "author": "SecureAI",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/secureai/privacy-shield-sdk"
+  },
+  "bugs": {
+    "url": "https://github.com/secureai/privacy-shield-sdk/issues"
+  },
+  "homepage": "https://github.com/secureai/privacy-shield-sdk#readme"
+} 
