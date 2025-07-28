@@ -253,12 +253,6 @@ We welcome contributions from the community. Please see our contributing guideli
 
 This project is licensed under the MIT License. See the LICENSE file for details.
 
-## Support
-
-* **Documentation**: [docs.dataguard.com](https://docs.dataguard.com)
-* **Community**: [community.dataguard.com](https://community.dataguard.com)
-* **Enterprise Support**: [support.dataguard.com](https://support.dataguard.com)
-
 ## Roadmap
 
 * Enhanced machine learning based detection
