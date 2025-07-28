@@ -1,10 +1,10 @@
-# SecureAI Data Loss Prevention
+# DataGuard - AI Privacy Protection
 
 A comprehensive AI privacy shield and data loss prevention system designed to protect sensitive information when interacting with AI models and external APIs.
 
 ## Overview
 
-SecureAI Data Loss Prevention provides enterprise grade protection for sensitive data during AI interactions. The system automatically detects, masks, and secures personally identifiable information (PII), financial data, and other confidential information before it reaches AI models or external services.
+DataGuard provides enterprise grade protection for sensitive data during AI interactions. The system automatically detects, masks, and secures personally identifiable information (PII), financial data, and other confidential information before it reaches AI models or external services.
 
 ## Key Features
 
@@ -20,19 +20,19 @@ SecureAI Data Loss Prevention provides enterprise grade protection for sensitive
 ### Installation
 
 ```bash
-pip install secureai-dataloss
+pip install dataguard
 ```
 
 ### Basic Usage
 
 ```python
-from secure_AI.ai_privacy_shield import SecureAIPrivacyShield
+from dataguard_core.privacy_shield import DataGuardPrivacyShield
 
 # Initialize the privacy shield
-shield = SecureAIPrivacyShield()
+shield = DataGuardPrivacyShield()
 
 # Process text with automatic protection
-protected_text = shield.process_text("My email is john.doe@company.com and my phone is 555-123-4567")
+protected_text = shield.protect_text("My email is john.doe@company.com and my phone is 555-123-4567")
 print(protected_text)
 # Output: My email is [EMAIL] and my phone is [PHONE]
 ```
@@ -40,7 +40,7 @@ print(protected_text)
 ### Advanced Configuration
 
 ```python
-from secure_AI.ai_privacy_shield import SecureAIPrivacyShield
+from dataguard_core.privacy_shield import DataGuardPrivacyShield
 
 # Custom configuration
 config = {
@@ -52,19 +52,19 @@ config = {
     "masking_mode": "hash"
 }
 
-shield = SecureAIPrivacyShield(config=config)
+shield = DataGuardPrivacyShield(config=config)
 ```
 
 ## Integration Options
 
 ### SDK Integration
 
-The SecureAI SDK provides the simplest integration path for most applications:
+The DataGuard SDK provides the simplest integration path for most applications:
 
 ```python
-from secureai_sdk import SecureAI
+from dataguard_sdk import DataGuard
 
-client = SecureAI(api_key="your_api_key")
+client = DataGuard(api_key="your_api_key")
 protected_data = client.protect("sensitive text here")
 ```
 
@@ -87,13 +87,13 @@ response = requests.post(
 For maximum control and offline processing:
 
 ```python
-from secure_AI.advanced_masking import AdvancedMasking
-from secure_AI.pii_detector import PIIDetector
+from dataguard_core.privacy_shield.advanced_masking import AdvancedMasking
+from dataguard_core.privacy_shield.enhanced_detection import EnhancedDetection
 
-detector = PIIDetector()
+detector = EnhancedDetection()
 masker = AdvancedMasking()
 
-detected = detector.detect(text)
+detected = detector.detect_with_patterns(text)
 protected = masker.mask(text, detected)
 ```
 
@@ -102,9 +102,9 @@ protected = masker.mask(text, detected)
 ### Environment Variables
 
 ```bash
-SECUREAI_API_KEY=your_api_key
-SECUREAI_ENVIRONMENT=production
-SECUREAI_LOG_LEVEL=info
+DATAGUARD_API_KEY=your_api_key
+DATAGUARD_ENVIRONMENT=production
+DATAGUARD_LOG_LEVEL=info
 ```
 
 ### Configuration File
@@ -153,8 +153,8 @@ Create a `config.json` file:
 ### Docker
 
 ```bash
-docker pull secureai/dataloss:latest
-docker run -p 8000:8000 secureai/dataloss:latest
+docker pull dataguard/privacy:latest
+docker run -p 8000:8000 dataguard/privacy:latest
 ```
 
 ### Kubernetes
@@ -163,20 +163,20 @@ docker run -p 8000:8000 secureai/dataloss:latest
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: secureai-dataloss
+  name: dataguard-privacy
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: secureai-dataloss
+      app: dataguard-privacy
   template:
     metadata:
       labels:
-        app: secureai-dataloss
+        app: dataguard-privacy
     spec:
       containers:
-      - name: secureai
-        image: secureai/dataloss:latest
+      - name: dataguard
+        image: dataguard/privacy:latest
         ports:
         - containerPort: 8000
 ```
@@ -255,9 +255,9 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ## Support
 
-* **Documentation**: [docs.secureai.com](https://docs.secureai.com)
-* **Community**: [community.secureai.com](https://community.secureai.com)
-* **Enterprise Support**: [support.secureai.com](https://support.secureai.com)
+* **Documentation**: [docs.dataguard.com](https://docs.dataguard.com)
+* **Community**: [community.dataguard.com](https://community.dataguard.com)
+* **Enterprise Support**: [support.dataguard.com](https://support.dataguard.com)
 
 ## Roadmap
 
